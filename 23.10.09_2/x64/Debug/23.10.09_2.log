@@ -1,0 +1,5 @@
+﻿  Source.cpp
+C:\Users\dev\Desktop\Projects\OOP\23.10.09_2\Source.cpp(10,14): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+C:\Users\dev\Desktop\Projects\OOP\23.10.09_2\Source.cpp(10,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+C:\Users\dev\Desktop\Projects\OOP\23.10.09_2\Source.cpp(84,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  23.10.09_2.vcxproj -> C:\Users\dev\Desktop\Projects\OOP\23.10.09_2\x64\Debug\23.10.09_2.exe
