@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -26,21 +27,24 @@ struct Book
 		Id = FullId;
 	}
 
-	void FillFromFile(string titleF, string authorF, string publisherF, string genreF, int year_of_publicationF, int priceF) {
+	void FillFromFile(string titleF, string authorF, string publisherF, string genreF, int year_of_publicationF, int priceF, int IdF) {
+		
 		title = titleF;
 		author = authorF;
 		publisher = publisherF;
 		genre = genreF;
 		year_of_publication = year_of_publicationF;
 		price = priceF;
+		Id = IdF;
 	}
 
 	void Fill() {
 
-		cout << "Title: "; cin >> title;
-		cout << "Author: "; cin >> author;
-		cout << "Publisher: "; cin >> publisher;
-		cout << "Genre: "; cin >> genre;
+		cin.ignore();
+		cout << "Title: "; getline(cin, title);
+		cout << "Author: "; getline(cin, author);
+		cout << "Publisher: "; getline(cin, publisher);
+		cout << "Genre: "; getline(cin, genre);
 		cout << "Year of publication: "; cin >> year_of_publication;
 		cout << "Price in $ (for example \"150\"): "; cin >> price;
 
@@ -102,6 +106,28 @@ struct Book
 	}
 	int Get_price() {
 		return price;
+	}
+
+	void Set_title(string title) {
+		this->title = title;
+	}
+	void Set_author(string author) {
+		this->author = author;
+	}	 
+	void Set_publisher(string publisher) {
+		this->publisher = publisher;
+	}	 
+	void Set_genre(string genre) {
+		this->genre = genre;
+	}	 
+	void Set_year_of_publication(int year_of_publication) {
+		this->year_of_publication = year_of_publication;
+	}	 
+	void Set_price(int price) {
+		this->price = price;
+	}
+	void Set_Id(int Id) {
+		this->Id = Id;
 	}
 
 #pragma endregion
@@ -228,6 +254,22 @@ void FindBy_price(Book* arr, int size) {
 	}
 }
 
+void AddNewBookEND(Book*& arr, int& size, Book to_add)
+{
+	Book* temp = new Book[size + 1];
+
+	for (int i = 0; i < size; i++)
+	{
+		temp[i] = arr[i];
+	}
+
+	temp[size] = to_add;
+
+	delete[] arr;
+	arr = temp;
+	size++;
+}
+
 void SaveToFile(Book*& arr, int& size)
 {
 	ofstream outFile("data.txt", ios::out | ios::trunc);
@@ -236,7 +278,7 @@ void SaveToFile(Book*& arr, int& size)
 
 		for (int i = 0; i < size; ++i) {
 
-			outFile << arr[i].title << ":" << arr[i].author << ":" << arr[i].publisher << ":" << arr[i].genre << ":" << arr[i].year_of_publication << ":" << arr[i].price << "|";
+			outFile << arr[i].title << ":" << arr[i].author << ":" << arr[i].publisher << ":" << arr[i].genre << ":" << arr[i].year_of_publication << ":" << arr[i].price << ":" << arr[i].Id << endl;
 		}
 		outFile.close();
 
@@ -254,32 +296,49 @@ void FillFrFile(Book*& arr, int& size)
 
 		while (!inFile.eof()) {
 
-			string title;
-			string author;
-			string publisher;
-			string genre;
-			int year_of_publication;
-			int price;
+			string title, author, publisher, genre;
+			int year_of_publication, price, Id;
 
 			char delimiter;
 
-			inFile >> title >> delimiter >> author >> delimiter >> publisher >> delimiter >> genre >> delimiter >> year_of_publication >> delimiter >> price >> delimiter;
+			getline(inFile, title, ':');
+
 			if (inFile.eof()) break;
 
-			Book readedDot;
-			readedDot.FillFromFile(title, author, publisher, genre, year_of_publication, price);
+			getline(inFile, author, ':');
+			getline(inFile, publisher, ':');
+			getline(inFile, genre, ':');
 
-			Book* temp = new Book[size + 1];
+			inFile >> year_of_publication >> delimiter;
+			inFile >> price >> delimiter;
+			inFile >> Id >> delimiter;
 
-			for (int i = 0; i < size; i++) {
-				temp[i] = arr[i];
-			}
+			Book newBook;
+			newBook.title = title;
+			newBook.author = author;
+			newBook.publisher = publisher;
+			newBook.genre = genre;
+			newBook.year_of_publication = year_of_publication;
+			newBook.price = price;
+			newBook.Id = Id;
 
-			temp[size] = readedDot;
+			#pragma region ForClass
 
-			delete[] arr;
-			arr = temp;
-			size++;
+				/*
+				Book newBook;
+				newBook.Set_title(title);
+				newBook.Set_author(author);
+				newBook.Set_publisher(publisher);
+				newBook.Set_genre(genre);
+				newBook.Set_year_of_publication(year_of_publication);
+				newBook.Set_price(price);
+				newBook.Set_Id(Id);
+				*/
+
+			#pragma endregion
+
+			AddNewBookEND(arr, size, newBook);
+
 		}
 
 		inFile.close();

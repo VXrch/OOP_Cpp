@@ -1,4 +1,4 @@
 ﻿  Source.cpp
-C:\Users\User\Desktop\ht\23.10.14_1\23.10.14_1\Source.cpp(414,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
-C:\Users\User\Desktop\ht\23.10.14_1\23.10.14_1\Source.cpp(416,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\User\Desktop\ht\23.10.14_1\23.10.14_1\Source.cpp(461,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+C:\Users\User\Desktop\ht\23.10.14_1\23.10.14_1\Source.cpp(463,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   23.10.14_1.vcxproj -> C:\Users\User\Desktop\ht\23.10.14_1\x64\Debug\23.10.14_1.exe
