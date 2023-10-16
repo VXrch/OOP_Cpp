@@ -1,0 +1,5 @@
+﻿  Source.cpp
+C:\Users\dev\Desktop\Projects\OOP\23.10.16_1\Source.cpp(135,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\dev\Desktop\Projects\OOP\23.10.16_1\Source.cpp(160,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\dev\Desktop\Projects\OOP\23.10.16_1\Source.cpp(174,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  23.10.16_1.vcxproj -> C:\Users\dev\Desktop\Projects\OOP\23.10.16_1\x64\Debug\23.10.16_1.exe
