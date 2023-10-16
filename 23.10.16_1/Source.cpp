@@ -14,7 +14,7 @@ public:
 		size = 0;
 		arr = nullptr;
 	}
-	Array(int size)
+	explicit Array(int size)
 	{
 		this->size = size;
 		
