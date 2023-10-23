@@ -1,0 +1,5 @@
+﻿  Source.cpp
+C:\Users\dev\Desktop\OOP\23.10.23\23.10.23\Source.cpp(275,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  Source1.cpp
+  Generating Code...
+  23.10.23.vcxproj -> C:\Users\dev\Desktop\OOP\23.10.23\x64\Debug\23.10.23.exe
