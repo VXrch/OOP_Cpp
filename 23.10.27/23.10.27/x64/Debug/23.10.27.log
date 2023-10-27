@@ -1,0 +1,11 @@
+﻿  Source.cpp
+D:\ht\23.10.27\23.10.27\Source.cpp(164,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+D:\ht\23.10.27\23.10.27\Source.cpp(245,19): warning C4244: =: преобразование "int" в "T_arr", возможна потеря данных
+          with
+          [
+              T_arr=float
+          ]
+D:\ht\23.10.27\23.10.27\Source.cpp(235,33): message : во время компиляции функции-члена класс шаблон "void Array<float>::FillRandom(void)"
+D:\ht\23.10.27\23.10.27\Source.cpp(199,21): message : см. первую ссылку на "Array<float>::FillRandom" в "main"
+D:\ht\23.10.27\23.10.27\Source.cpp(198,15): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "Array<float>"
+  23.10.27.vcxproj -> D:\ht\23.10.27\x64\Debug\23.10.27.exe
