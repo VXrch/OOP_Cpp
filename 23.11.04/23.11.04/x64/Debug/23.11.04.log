@@ -1,3 +1,5 @@
 ﻿  Source.cpp
-C:\Users\dev\Desktop\OOP\23.11.04\23.11.04\Source.cpp(62,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  23.11.04.vcxproj -> C:\Users\dev\Desktop\OOP\23.11.04\x64\Debug\23.11.04.exe
+D:\ht\23.11.04\23.11.04\Source.cpp(24,15): warning C4838: Преобразование из "const int" в "SHORT" требует сужающего преобразования.
+D:\ht\23.11.04\23.11.04\Source.cpp(24,18): warning C4838: Преобразование из "const int" в "SHORT" требует сужающего преобразования.
+D:\ht\23.11.04\23.11.04\Source.cpp(257,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  23.11.04.vcxproj -> D:\ht\23.11.04\x64\Debug\23.11.04.exe
