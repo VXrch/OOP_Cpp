@@ -1,5 +1,8 @@
 ﻿  Source.cpp
 C:\Users\dev\Desktop\OOP\23.11.08_Inheritance\23.11.08_Inheritance\Source.cpp(55,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
   Source2.cpp
+C:\Users\dev\Desktop\OOP\23.11.08_Inheritance\23.11.08_Inheritance\Source2.cpp(60,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
   Generating Code...
-  23.11.08_Inheritance.vcxproj -> C:\Users\dev\Desktop\OOP\23.11.08_Inheritance\x64\Debug\23.11.08_Inheritance.exe
+  LINK : C:\Users\dev\Desktop\OOP\23.11.08_Inheritance\x64\Debug\23.11.08_Inheritance.exe not found or not built by the last incremental link; performing full link
+Source2.obj : error LNK2005: main already defined in Source.obj
+C:\Users\dev\Desktop\OOP\23.11.08_Inheritance\x64\Debug\23.11.08_Inheritance.exe : fatal error LNK1169: one or more multiply defined symbols found
