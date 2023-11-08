@@ -44,6 +44,13 @@ class List
 public:
 
 	List() : head(nullptr), tail(nullptr), size(0) {}
+	List(List &other)
+	{
+		for (Node* i = other.head; i != nullptr; i = i->next)
+		{
+			this->AddToHead(i->value);
+		}
+	}
 
 	void Print()
 	{
@@ -294,12 +301,7 @@ public:
 	{
 		this->model = other.model;
 		this->countVagons = other.countVagons;
-		this->vagon = new List[other.countVagons];
-
-		for (int i = 0; i < countVagons; i++)
-		{
-			this->vagon[i] = other.vagon[i];
-		}
+		
 	}
 
 	void AddCarriage() {
