@@ -27,7 +27,7 @@ struct Vagon {
 
 class List
 {
-	
+
 	struct Node
 	{
 		Node* prev;
@@ -325,6 +325,7 @@ public:
 
 		cout << "Model: " << model << endl;
 		cout << "Count vagons: " << countVagons << endl;
+
 		for (int i = 0; i < countVagons; i++)
 		{
 			vagon[i].Print();
