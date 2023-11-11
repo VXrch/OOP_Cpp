@@ -2,6 +2,8 @@
 #include <conio.h>
 #include <iomanip>
 #include <string>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -133,6 +135,25 @@ string GetBalance(User user)
     string text = "BALANCE: " + to_string(user.balance) + " woolongs";
     return text;
 }
+void PrintByNumber(int n)
+{
+    if (n== 1)
+    {
+        cout << char(197); // ┼
+    }
+    else if (n == 2)
+    {
+        cout << char(206); // ╬
+    }
+    else if (n == 3)
+    {
+        cout << char(176); // ░
+    }
+    else if (n == 4)
+    {
+        cout << char(219); // █
+    }
+}
 
 const string text_menu = "MENU [0]";
 
@@ -143,32 +164,76 @@ void AnyLine(int symbhol, int iter) {
         cout << (char)symbhol;
     }
 }
-void Enter(int number, string text_to_add) {
-    cout << setw(number - 1) << text_to_add << " ";
+void Enter(string text_to_add) {
+
+    float text_lenght = text_to_add.length();
+    cout << " " << setw(text_lenght) << text_to_add << " ";
+}
+void Enter(int number) 
+{
+    for (int i = 0; i < number; i++)
+    {
+        cout << " ";
+    }
 }
 void Top(User user) {
 
     string text = GetBalance(user);
-    AnyLine(218, 1); AnyLine(196, (user.name.length() + 1)); AnyLine(194, 1); AnyLine(196, ((text.length()) + 1)); AnyLine(194, 1); AnyLine(196, ((text_menu.length()) + 2)); AnyLine(191, 1);
+    //       ┌────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────┐
+    AnyLine(218, 1);   AnyLine(196, (user.name.length() + 2));   AnyLine(194, 1); AnyLine(196, ((text.length()) + 2)); AnyLine(194, 1);    AnyLine(196, ((text_menu.length()) + 2));  AnyLine(191, 1);
     cout << endl;
-    AnyLine(179, 1); Enter(3, user.name); AnyLine(179, 1); Enter(6, text); AnyLine(179, 1); Enter(2, text_menu); cout << " "; AnyLine(179, 1);
+    //       │                       USERNANE                         │                BALANCE: USER.BALANCE                │                          MENU [0]                        │
+    AnyLine(179, 1);            Enter(user.name);                AnyLine(179, 1);           Enter(text);              AnyLine(179, 1);             Enter(text_menu);                  AnyLine(179, 1);
     cout << endl;
-    AnyLine(192, 1); AnyLine(196, (user.name.length() + 1)); AnyLine(193, 1); AnyLine(196, ((text.length()) + 1)); AnyLine(193, 1); AnyLine(196, ((text_menu.length()) + 2)); AnyLine(217, 1);
+    //       └────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────┘
+    AnyLine(192, 1);   AnyLine(196, (user.name.length() + 2));   AnyLine(193, 1); AnyLine(196, ((text.length()) + 2)); AnyLine(193, 1);    AnyLine(196, ((text_menu.length()) + 2));  AnyLine(217, 1);
     cout << endl;
 }
-void START()
+void START(User user)
 {
-    string text = "START";
-    AnyLine(218, 1); AnyLine(196, ((text.length()) + 10)); AnyLine(191, 1);
+    string text = GetBalance(user);
+    int full_lenght = 8 + user.name.length() + text_menu.length() + text.length();
+    text = "press [ENTER] to START";
+    //      ┌───────────────────────────────────────────────────────┐
+    AnyLine(218, 1);       AnyLine(196, full_lenght);            AnyLine(191, 1);
     cout << endl;
-    AnyLine(179, 1); Enter(3, text); Enter(text.length(), ""); AnyLine(179, 1);
+    //      │                         START                         │
+    AnyLine(179, 1); Enter(full_lenght/5); Enter(text);   Enter((full_lenght - (full_lenght / 5) - text.length()) - 2); AnyLine(179, 1);
     cout << endl;
-    AnyLine(192, 1); AnyLine(196, ((text.length()) + 10)); AnyLine(217, 1);
+    //      └───────────────────────────────────────────────────────┘
+    AnyLine(192, 1);      AnyLine(196, full_lenght);             AnyLine(217, 1);
     cout << endl;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void GiantFrog();
-int MainPage(User user);
+int MainPage(User& user);
+int DrumsSpin(User& user);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void SmoothPhrase(int n1, int n2, int n3)
+{
+    int r_n_1;
+    int r_n_2;
+    int r_n_3;
+    int delay = 100;
+
+    for (int i = 0; delay < 1000; i++)
+    {
+        system("cls");
+        r_n_1 = 1 + rand() % 4; r_n_2 = 1 + rand() % 4; r_n_3 = 1 + rand() % 4;
+
+        cout << "\t\t";  PrintByNumber(r_n_1); PrintByNumber(r_n_2); PrintByNumber(r_n_3);
+        this_thread::sleep_for(chrono::milliseconds(delay));
+        delay += 50;
+    }
+    this_thread::sleep_for(chrono::milliseconds(1100));
+    system("cls");
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void main()
 {
@@ -201,27 +266,41 @@ void main()
     while (!ext)
     {
         choice = MainPage(user);
+
+        if (choice == 1) // Spin
+        {
+            DrumsSpin(user);
+        }
+        else if (choice == 0) // Menu
+        {
+            
+        }
     }
 }
 
-int MainPage(User user) //  Username / Balance / Menu / Start (200 w.)
+int MainPage(User& user) //  Username / Balance / Menu / Start (200 w.)
 {
     Top(user);
-    START();
+    START(user);
 
-    int key = _getch();
+    bool ext = false;
 
-    if (key == 13) // Enter
+    while (!ext)
     {
-        return 1;
-    }
-    else if (key == 1)
-    {
-        return 0;
+        int key = _getch();
+
+        if (key == 13) // Enter
+        {
+            return 1;
+        }
+        else if (key == 48)
+        {
+            return 0;
+        }
     }
 }
 
-void Menu() // Exit / balance / spins history 
+void Menu() // Exit / spins history / return to spins
 {
 
 }
@@ -231,10 +310,100 @@ void FirstSpin() // Forced first spin (garantee win +100 w.)
 
 }
 
-void DrumsSpin() // Animated drums spins
+int DrumsSpin(User& user) // Animated drums spins
 {
+    if (user.balance < 200)
+        return -1;
 
+    user.balance -= 200;
 
+    int n1 = RandomiseProbabilities();
+    int n2 = RandomiseProbabilities();
+    int n3 = RandomiseProbabilities();
+
+    SmoothPhrase(n1, n2, n3);
+
+    if (n1 == n2 == n3) // if n1 n2 and n3 = thesame numbers
+    {
+        if (n1 == 1) // 1 + 1 + 1
+        {
+            cout << "+ 500!" << endl;
+            user.balance += 500;
+            return 31;
+        }
+        if (n1 == 2) // 2 + 2 + 2
+        {
+            cout << "+ 1,000!!" << endl;
+            user.balance += 1000;
+            return 32;
+        }
+        if (n1 == 3)  // 3 + 3 + 3
+        {
+            cout << "+ 10,000!!!" << endl;
+            user.balance += 10000;
+            return 33;
+        }
+        if (n1 == 4)  // 4 + 4 + 4
+        {
+            cout << "!!!  + 1,000,000  !!!" << endl;
+            user.balance += 1000000;
+            return 34;
+        }
+    }
+
+    else if (n1 == n2 || n2 == n3 || n1 == n3) // if n1 and n2 = the same numbers
+    {
+        if ((n1 == n2 && n1 == 1) || (n2 == n3 && n1 == 1) || (n1 == n3 && n1 == 1)) // 1 + 1 + x
+        {
+            cout << "+ 50!" << endl;
+            user.balance += 50;
+            return 21;
+        }
+        if ((n1 == n2 && n1 == 2) || (n2 == n3 && n1 == 2) || (n1 == n3 && n1 == 2)) // 2 + 2 + x
+        {
+            cout << "+ 100!" << endl;
+            user.balance += 100;
+            return 22;
+        }
+        if ((n1 == n2 && n1 == 3) || (n2 == n3 && n1 == 3) || (n1 == n3 && n1 == 3))  // 3 + 3 + x
+        {
+            cout << "+ 1,000!!" << endl;
+            user.balance += 1000;
+            return 23;
+        }
+        if ((n1 == n2 && n1 == 4) || (n2 == n3 && n1 == 4) || (n1 == n3 && n1 == 4))  // 4 + 4 + x
+        {
+            cout << "+ 50,00!!!" << endl;
+            user.balance += 50000;
+            return 24;
+        }
+    }
+    
+    if (n1 == 1 || n2 == 1 || n3 == 1)
+    {
+        cout << "+ 0!" << endl;
+        user.balance += 0;
+    }
+    
+    if (n1 == 2 || n2 == 2 || n3 == 2)
+    {
+        cout << "+ 100!" << endl;
+        user.balance += 100;
+    }
+    
+    if (n1 == 3 || n2 == 3 || n3 == 3)
+    {
+        cout << "+ 500!!" << endl;
+        user.balance += 500;
+    }
+    
+    if (n1 == 4 || n2 == 4 || n3 == 4)
+    {
+        cout << "+ 1,000!!!" << endl;
+        user.balance += 1000;
+    }
+
+    return 111;
 }
 
 void GiantFrog()

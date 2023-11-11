@@ -1,18 +1,19 @@
 ﻿  Home_Task.cpp
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(112,31): warning C4305: инициализация: усечение из "double" в "float"
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(112,37): warning C4305: инициализация: усечение из "double" в "float"
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(112,42): warning C4305: инициализация: усечение из "double" в "float"
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(152,51): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(152,97): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(152,148): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(156,51): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(156,97): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(156,148): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(162,52): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(164,58): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(166,52): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(174,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(193,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(130): warning C4715: RandomiseProbabilities: значение возвращается не при всех путях выполнения
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(222): warning C4715: MainPage: значение возвращается не при всех путях выполнения
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(114,31): warning C4305: инициализация: усечение из "double" в "float"
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(114,37): warning C4305: инициализация: усечение из "double" в "float"
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(114,42): warning C4305: инициализация: усечение из "double" в "float"
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(169,23): warning C4244: инициализация: преобразование "unsigned __int64" в "float", возможна потеря данных
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(170,25): warning C4244: аргумент: преобразование "float" в "std::streamsize", возможна потеря данных
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(183,57): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(183,113): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(183,175): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(189,57): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(189,113): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(189,175): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(195,21): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(201,115): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(239,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(258,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(132): warning C4715: RandomiseProbabilities: значение возвращается не при всех путях выполнения
+D:\ht\23.11.01\Home_Task\Home_Task.cpp(301): warning C4715: MainPage: значение возвращается не при всех путях выполнения
   Home_Task.vcxproj -> D:\ht\23.11.01\x64\Debug\Home_Task.exe
