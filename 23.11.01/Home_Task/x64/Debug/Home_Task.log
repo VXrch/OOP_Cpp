@@ -1,19 +1,21 @@
 ﻿  Home_Task.cpp
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(114,31): warning C4305: инициализация: усечение из "double" в "float"
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(114,37): warning C4305: инициализация: усечение из "double" в "float"
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(114,42): warning C4305: инициализация: усечение из "double" в "float"
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(169,23): warning C4244: инициализация: преобразование "unsigned __int64" в "float", возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(170,25): warning C4244: аргумент: преобразование "float" в "std::streamsize", возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(183,57): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(183,113): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(183,175): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(189,57): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(189,113): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(189,175): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(195,21): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(201,115): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(239,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(258,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(132): warning C4715: RandomiseProbabilities: значение возвращается не при всех путях выполнения
-D:\ht\23.11.01\Home_Task\Home_Task.cpp(301): warning C4715: MainPage: значение возвращается не при всех путях выполнения
-  Home_Task.vcxproj -> D:\ht\23.11.01\x64\Debug\Home_Task.exe
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(114,52): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(178,23): warning C4244: 'initializing': conversion from 'unsigned __int64' to 'float', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(179,25): warning C4244: 'argument': conversion from 'float' to 'std::streamsize', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(197,61): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(197,115): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(197,177): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(203,61): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(203,115): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(203,175): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(209,82): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(215,67): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(226,31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(232,55): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(232,104): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(232,166): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(272,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(291,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(132): warning C4715: 'RandomiseProbabilities': not all control paths return a value
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(344): warning C4715: 'MainPage': not all control paths return a value
+  Home_Task.vcxproj -> C:\Users\dev\Desktop\OOP\23.11.01\x64\Debug\Home_Task.exe

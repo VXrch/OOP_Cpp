@@ -41,11 +41,17 @@ public:
     {
         for (int i = 0; i <= topIndex; i++) {
 
-            cout << arr[i] << " - ";
+            cout << arr[i] << " | ";
         }
 
         cout << endl;
     }
+
+    T_Stack operator [](int i)
+    {
+        return arr[i];
+    }
+
     int GetCount()const {
         return topIndex + 1;
     }
@@ -61,7 +67,7 @@ public:
 
     void Expand()
     {
-        T_Stack* new_arr = T_Stack[size + 10];
+        T_Stack* new_arr = new T_Stack[size + 10];
 
         for (int i = 0; i < size; i++)
         {
@@ -72,7 +78,7 @@ public:
         arr = new_arr;
         size += 10;
     }
-    bool Push(int elem)
+    bool Push(T_Stack elem)
     {
         if (!IsFull()) {
 
@@ -143,19 +149,21 @@ void PrintByNumber(int n)
     }
     else if (n == 2)
     {
-        cout << char(206); // ╬
+        cout << char(184); // ©
     }
     else if (n == 3)
     {
-        cout << char(176); // ░
+        cout << char(128); // Ç
     }
     else if (n == 4)
     {
-        cout << char(219); // █
+        cout << char(154); // Ü
     }
 }
 
 const string text_menu = "MENU [0]";
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void AnyLine(int symbhol, int iter) {
 
@@ -164,11 +172,6 @@ void AnyLine(int symbhol, int iter) {
         cout << (char)symbhol;
     }
 }
-void Enter(string text_to_add) {
-
-    float text_lenght = text_to_add.length();
-    cout << " " << setw(text_lenght) << text_to_add << " ";
-}
 void Enter(int number) 
 {
     for (int i = 0; i < number; i++)
@@ -176,32 +179,66 @@ void Enter(int number)
         cout << " ";
     }
 }
-void Top(User user) {
+void Enter(string text_to_add) {
+
+    float text_lenght = text_to_add.length();
+    cout << " " << setw(text_lenght) << text_to_add << " ";
+}
+void Enter(int number, string text)
+{
+    for (int i = 0; i < number/2; i++)
+    {
+        cout << " ";
+    }
+    cout << text;
+    for (int i = 0; i < number / 2; i++)
+    {
+        cout << " ";
+    }
+}
+void TOP(User user) {
 
     string text = GetBalance(user);
     //       ┌────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────┐
-    AnyLine(218, 1);   AnyLine(196, (user.name.length() + 2));   AnyLine(194, 1); AnyLine(196, ((text.length()) + 2)); AnyLine(194, 1);    AnyLine(196, ((text_menu.length()) + 2));  AnyLine(191, 1);
+    AnyLine(218, 1);   AnyLine(196, (user.name.length() + 2));   AnyLine(194, 1); AnyLine(196, (text.length() + 2));   AnyLine(194, 1);    AnyLine(196, (text_menu.length() + 2));  AnyLine(191, 1);
     cout << endl;
     //       │                       USERNANE                         │                BALANCE: USER.BALANCE                │                          MENU [0]                        │
-    AnyLine(179, 1);            Enter(user.name);                AnyLine(179, 1);           Enter(text);              AnyLine(179, 1);             Enter(text_menu);                  AnyLine(179, 1);
+    AnyLine(179, 1);            Enter(user.name);                AnyLine(179, 1);           Enter(text);               AnyLine(179, 1);             Enter(text_menu);               AnyLine(179, 1);
     cout << endl;
     //       └────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────┘
-    AnyLine(192, 1);   AnyLine(196, (user.name.length() + 2));   AnyLine(193, 1); AnyLine(196, ((text.length()) + 2)); AnyLine(193, 1);    AnyLine(196, ((text_menu.length()) + 2));  AnyLine(217, 1);
+    AnyLine(192, 1);   AnyLine(196, (user.name.length() + 2));   AnyLine(193, 1); AnyLine(196, (text.length() + 2));   AnyLine(193, 1);    AnyLine(196, text_menu.length() + 2);    AnyLine(217, 1);
     cout << endl;
 }
 void START(User user)
 {
     string text = GetBalance(user);
     int full_lenght = 8 + user.name.length() + text_menu.length() + text.length();
-    text = "press [ENTER] to START";
+    text = "press [ENTER] to START (200 w)";
     //      ┌───────────────────────────────────────────────────────┐
     AnyLine(218, 1);       AnyLine(196, full_lenght);            AnyLine(191, 1);
     cout << endl;
     //      │                         START                         │
-    AnyLine(179, 1); Enter(full_lenght/5); Enter(text);   Enter((full_lenght - (full_lenght / 5) - text.length()) - 2); AnyLine(179, 1);
+    AnyLine(179, 1);     Enter((full_lenght - text.length()), text); AnyLine(179, 1);
     cout << endl;
     //      └───────────────────────────────────────────────────────┘
     AnyLine(192, 1);      AnyLine(196, full_lenght);             AnyLine(217, 1);
+    cout << endl;
+}
+void MENU()
+{
+    string t1 = "EXIT [1]";
+    string t2 = "SPINS HISTORY [2]";
+    string t3 = "RETURN TO MAIN [3]";
+    int len = t3.length() + 10;
+
+    //      ┌─────────────────────────────────────────────┬─────────────────────────────────────────────────┬────────────────────────────────────────────────┐
+    AnyLine(218, 1);       AnyLine(196, len);       AnyLine(194, 1);        AnyLine(196, len);        AnyLine(194, 1);          AnyLine(196, len);           AnyLine(191, 1);
+    cout << endl;
+    //      │                    EXIT                     │               SPINS HISTORY                     │            RETURN TO MAIN PAGE                 │
+    AnyLine(179, 1); Enter((len - t1.length() + 1), t1); AnyLine(179, 1); Enter((len - t2.length()), t2); cout << " "; AnyLine(179, 1); Enter((len - t3.length()), t3); AnyLine(179, 1);
+    cout << endl;
+    //      └─────────────────────────────────────────────┴─────────────────────────────────────────────────┴────────────────────────────────────────────────┘
+    AnyLine(192, 1);       AnyLine(196, len);       AnyLine(193, 1);        AnyLine(196, len);        AnyLine(193, 1);          AnyLine(196, len);           AnyLine(217, 1);
     cout << endl;
 }
 
@@ -209,7 +246,10 @@ void START(User user)
 
 void GiantFrog();
 int MainPage(User& user);
-int DrumsSpin(User& user);
+int Menu();
+
+template<typename T>
+int DrumsSpin(User& user, Stack<T>& history);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -225,11 +265,11 @@ void SmoothPhrase(int n1, int n2, int n3)
         system("cls");
         r_n_1 = 1 + rand() % 4; r_n_2 = 1 + rand() % 4; r_n_3 = 1 + rand() % 4;
 
-        cout << "\t\t";  PrintByNumber(r_n_1); PrintByNumber(r_n_2); PrintByNumber(r_n_3);
+        cout << "\t\t";  PrintByNumber(r_n_1); cout << " "; PrintByNumber(r_n_2); cout << " "; PrintByNumber(r_n_3);
         this_thread::sleep_for(chrono::milliseconds(delay));
         delay += 50;
     }
-    this_thread::sleep_for(chrono::milliseconds(1100));
+    this_thread::sleep_for(chrono::milliseconds(1000));
     system("cls");
 }
 
@@ -257,6 +297,8 @@ void main()
 
     srand(time(NULL));
     
+    Stack<int> history;
+
     User user;
     cout << "Enter your username: "; cin >> user.name;
     
@@ -269,18 +311,25 @@ void main()
 
         if (choice == 1) // Spin
         {
-            DrumsSpin(user);
+            DrumsSpin(user, history);
         }
         else if (choice == 0) // Menu
         {
-            
+            choice = Menu();
+
+            if (choice == 0)
+            {
+                // BYE!
+                cout << "Bye!" << endl;
+                ext = true;
+            }
         }
     }
 }
 
 int MainPage(User& user) //  Username / Balance / Menu / Start (200 w.)
 {
-    Top(user);
+    TOP(user);
     START(user);
 
     bool ext = false;
@@ -297,25 +346,57 @@ int MainPage(User& user) //  Username / Balance / Menu / Start (200 w.)
         {
             return 0;
         }
+        else if (key == 70)
+        {
+            system("cls");
+            GiantFrog();
+            system("pause");
+            system("cls");
+            return 0;
+        }
+    }
+}
+int Menu()
+{
+    MENU();
+
+    bool ext = false;
+
+    while (!ext)
+    {
+        int key = _getch();
+
+        if (key == 49) // Exit
+        {
+            ext = true;
+            return 0;
+        }
+        else if (key == 50) // History
+        {
+            
+        }
+        else if (key == 51) // Return
+        {
+            
+        }
+        else if (key == 70) // Frog :)
+        {
+            system("cls");
+            GiantFrog();
+            system("pause");
+            system("cls");
+        }
     }
 }
 
-void Menu() // Exit / spins history / return to spins
-{
-
-}
-
-void FirstSpin() // Forced first spin (garantee win +100 w.)
-{
-
-}
-
-int DrumsSpin(User& user) // Animated drums spins
+template<typename T>
+int DrumsSpin(User& user, Stack<T>& history) // Animated drums spins
 {
     if (user.balance < 200)
         return -1;
 
     user.balance -= 200;
+    int result = 0;
 
     int n1 = RandomiseProbabilities();
     int n2 = RandomiseProbabilities();
@@ -328,26 +409,22 @@ int DrumsSpin(User& user) // Animated drums spins
         if (n1 == 1) // 1 + 1 + 1
         {
             cout << "+ 500!" << endl;
-            user.balance += 500;
-            return 31;
+            result += 500;
         }
         if (n1 == 2) // 2 + 2 + 2
         {
             cout << "+ 1,000!!" << endl;
-            user.balance += 1000;
-            return 32;
+            result += 1000;
         }
         if (n1 == 3)  // 3 + 3 + 3
         {
             cout << "+ 10,000!!!" << endl;
-            user.balance += 10000;
-            return 33;
+            result += 10000;
         }
         if (n1 == 4)  // 4 + 4 + 4
         {
             cout << "!!!  + 1,000,000  !!!" << endl;
-            user.balance += 1000000;
-            return 34;
+            result += 1000000;
         }
     }
 
@@ -355,55 +432,53 @@ int DrumsSpin(User& user) // Animated drums spins
     {
         if ((n1 == n2 && n1 == 1) || (n2 == n3 && n1 == 1) || (n1 == n3 && n1 == 1)) // 1 + 1 + x
         {
-            cout << "+ 50!" << endl;
-            user.balance += 50;
-            return 21;
+            cout << "+ 100!" << endl;
+            result += 100;
         }
         if ((n1 == n2 && n1 == 2) || (n2 == n3 && n1 == 2) || (n1 == n3 && n1 == 2)) // 2 + 2 + x
         {
-            cout << "+ 100!" << endl;
-            user.balance += 100;
-            return 22;
+            cout << "+ 200!" << endl;
+            result += 200;
         }
         if ((n1 == n2 && n1 == 3) || (n2 == n3 && n1 == 3) || (n1 == n3 && n1 == 3))  // 3 + 3 + x
         {
-            cout << "+ 1,000!!" << endl;
-            user.balance += 1000;
-            return 23;
+            cout << "+ 500!!" << endl;
+            result += 500;
         }
         if ((n1 == n2 && n1 == 4) || (n2 == n3 && n1 == 4) || (n1 == n3 && n1 == 4))  // 4 + 4 + x
         {
-            cout << "+ 50,00!!!" << endl;
-            user.balance += 50000;
-            return 24;
+            cout << "+ 1,000!!!" << endl;
+            result += 1000;
         }
     }
-    
+
     if (n1 == 1 || n2 == 1 || n3 == 1)
     {
         cout << "+ 0!" << endl;
-        user.balance += 0;
-    }
-    
-    if (n1 == 2 || n2 == 2 || n3 == 2)
-    {
-        cout << "+ 100!" << endl;
-        user.balance += 100;
-    }
-    
-    if (n1 == 3 || n2 == 3 || n3 == 3)
-    {
-        cout << "+ 500!!" << endl;
-        user.balance += 500;
-    }
-    
-    if (n1 == 4 || n2 == 4 || n3 == 4)
-    {
-        cout << "+ 1,000!!!" << endl;
-        user.balance += 1000;
     }
 
-    return 111;
+    if (n1 == 2 || n2 == 2 || n3 == 2)
+    {
+        cout << "+ 10!" << endl;
+        result += 10;
+    }
+
+    if (n1 == 3 || n2 == 3 || n3 == 3)
+    {
+        cout << "+ 50!!" << endl;
+        result += 50;
+    }
+
+    if (n1 == 4 || n2 == 4 || n3 == 4)
+    {
+        cout << "+ 100!!!" << endl;
+        result += 100;
+    }
+
+    user.balance += result;
+    history.Push(result);
+
+    return result;
 }
 
 void GiantFrog()
