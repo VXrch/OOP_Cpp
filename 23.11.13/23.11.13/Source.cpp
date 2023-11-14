@@ -5,7 +5,6 @@ using namespace std;
 template <typename T>
 class List
 {
-
 	struct Node
 	{
 		Node* prev;
@@ -77,16 +76,28 @@ public:
 			iter++;
 		}
 	}
-	void AddAge(float age)
+	void GrowOne()
 	{
-		int iter = 1;
+		head->value.Grow();
+		if (head->value.IsAlive() == false)
+		{
+			SomeoneDied(head->value);
+			DeleteFromHead();
+		}
+	}
+	void AddAge(float age, int pos)
+	{
+		int iter = 0;
 		for (Node* i = head; i != nullptr; i = i->next)
 		{
-			i->value.AddAge(age);
-			if (!i->value.IsAlive())
+			if (iter == pos)
 			{
-				SomeoneDied(i->value);
-				DeleteByPos(iter);
+				i->value.AddAge(age);
+				if (!i->value.IsAlive())
+				{
+					SomeoneDied(i->value);
+					DeleteByPos(iter);
+				}
 			}
 			iter++;
 		}
@@ -200,7 +211,6 @@ public:
 			head->prev = nullptr;
 		}
 		size--;
-
 	}
 	void DeleteByPos(int pos)
 	{
@@ -281,7 +291,6 @@ public:
 		this->age += age;
 		alive = IsAlive();
 	}
-
 	virtual void Grow()
 	{
 		age += 0.1;
@@ -401,34 +410,100 @@ public:
 	{
 		cout << "Grass: "; grass.Print(); cout << endl;
 	}
-
-	void AddAge(float age)
-	{
-		foxes.AddAge(age);
-		rabbits.AddAge(age);
-		grass.AddAge(age);
-	}
-	void AddAgeGrass(float age)
-	{
-		foxes.AddAge(age);
-	}
-	void AddAgeFoxes(float age)
-	{
-		rabbits.AddAge(age);
-	}
-	void AddAgeRabbits(float age)
-	{
-		grass.AddAge(age);
-	}
-
 	
-	void Grow()
+	void AddAgeForFirsts(float age)
+	{
+		foxes.AddAge(age, 1);
+		rabbits.AddAge(age, 1);
+		grass.AddAge(age, 1);
+	}
+	void AddAgeForOneFox(float age)
+	{
+		foxes.AddAge(age, 1);
+	}
+	void AddAgeForOneRabbit(float age)
+	{
+		rabbits.AddAge(age, 1);
+	}
+	void AddAgeForOneGrass(float age)
+	{
+		rabbits.AddAge(age, 1);
+	}
+
+	void AddAgeForFirst(float age, int pos)
+	{
+		foxes.AddAge(age, pos);
+		rabbits.AddAge(age, pos);
+		grass.AddAge(age, pos);
+	}
+	void AddAgeForOneFox(float age, int pos)
+	{
+		foxes.AddAge(age, pos);
+	}
+	void AddAgeForOneRabbit(float age, int pos)
+	{
+		rabbits.AddAge(age, pos);
+	}
+	void AddAgeForOneGrass(float age, int pos)
+	{
+		rabbits.AddAge(age, pos);
+	}
+	
+	void GrowAll()
 	{
 		foxes.Grow();
 		rabbits.Grow();
 		grass.Grow();
 	}
+	void GrowFoxes()
+	{
+		foxes.Grow();
+	}
+	void GrowOneFox()
+	{
+		foxes.GrowOne();
+	}
+	void GrowRabbits()
+	{
+		rabbits.Grow();
+	}
+	void GrowGrass()
+	{
+		grass.Grow();
+	}
+
+	string RandomiseGender()
+	{
+		int gender = 1 + rand() % 20;
+		gender = 1 + rand() % 20;
+		gender %= 2;
+
+		if (gender == 1)
+			return "male";
+		else
+			return "female";
+	}
+
+	void BirthFox() 
+	{
+		Fox NewFox(0.1, RandomiseGender());
+		foxes.AddToTail(NewFox);
+	}
+	void BirthRabbit() 
+	{
+		Rabbit NewRabbit(0.1, RandomiseGender());
+		rabbits.AddToTail(NewRabbit);
+	}
+	void NewGrass() 
+	{
+		grass.AddToTail(Grass());
+	}
 };
+
+void OneYear(Life life)
+{
+
+}
 
 void main()
 {
@@ -462,6 +537,8 @@ void main()
 		Для зручності можна створити структуру struct Point { int x, y };
 	*/
 
+	srand(time(NULL));
+
 	Life life;
 
 	/*life.ShortPrint();
@@ -469,6 +546,4 @@ void main()
 
 	cout << "____________________________| AFTER |____________________________" << endl;
 	life.ShortPrint();*/
-
-	life.AddAgeFoxes(5);
 }

@@ -1,14 +1,17 @@
 ﻿  Source.cpp
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(258,16): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(287,1): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(303,7): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(342,5): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(343,5): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(344,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(345,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(350,8): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(351,8): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(352,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(353,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(434,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  23.11.13.vcxproj -> C:\Users\dev\Desktop\OOP\23.11.13\x64\Debug\23.11.13.exe
+D:\ht\23.11.13\23.11.13\Source.cpp(268,24): warning C4305: инициализация: усечение из "double" в "float"
+D:\ht\23.11.13\23.11.13\Source.cpp(296,1): warning C4305: +=: усечение из "double" в "float"
+D:\ht\23.11.13\23.11.13\Source.cpp(312,67): warning C4305: инициализация: усечение из "double" в "float"
+D:\ht\23.11.13\23.11.13\Source.cpp(351,17): warning C4305: аргумент: усечение из "double" в "float"
+D:\ht\23.11.13\23.11.13\Source.cpp(352,30): warning C4305: аргумент: усечение из "double" в "float"
+D:\ht\23.11.13\23.11.13\Source.cpp(353,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\ht\23.11.13\23.11.13\Source.cpp(354,39): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\ht\23.11.13\23.11.13\Source.cpp(359,20): warning C4305: аргумент: усечение из "double" в "float"
+D:\ht\23.11.13\23.11.13\Source.cpp(360,33): warning C4305: аргумент: усечение из "double" в "float"
+D:\ht\23.11.13\23.11.13\Source.cpp(361,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\ht\23.11.13\23.11.13\Source.cpp(362,42): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\ht\23.11.13\23.11.13\Source.cpp(489,14): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+D:\ht\23.11.13\23.11.13\Source.cpp(494,20): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+D:\ht\23.11.13\23.11.13\Source.cpp(504,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+D:\ht\23.11.13\23.11.13\Source.cpp(535,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  23.11.13.vcxproj -> D:\ht\23.11.13\x64\Debug\23.11.13.exe
