@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -22,13 +24,6 @@ class List
 public:
 
 	List() : head(nullptr), tail(nullptr), size(0) {}
-	List(List& other)
-	{
-		for (Node* i = other.head; i != nullptr; i = i->next)
-		{
-			this->AddToHead(i->value);
-		}
-	}
 
 	void Print() const
 	{
@@ -58,22 +53,64 @@ public:
 			return true;
 	}
 
+	int GetSize() const
+	{
+		return size;
+	}
+
 	void SomeoneDied(T someone)
 	{
 		cout << "This " << someone.GetView() << " died of old age!" << endl;
 	}
+	
+	bool IllAndDie()
+	{
+		int chance = rand() % 100;
+		chance = rand() % 10;
+		chance %= size + 1;
+
+		if (chance == 1)
+		{
+			DeleteFromHead();
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	void Grow()
 	{
-		int iter = 1;
+		int iter = 0;
 		for (Node* i = head; i != nullptr; i = i->next)
 		{
 			i->value.Grow();
-			if (i->value.IsAlive() == false)
+		}
+
+		bool found = false;
+		for (int i = 0; i < size; i++)
+		{
+			iter = 0;
+			if (found == true || i == 0)
 			{
-				SomeoneDied(i->value);
-				DeleteByPos(iter);
+				for (Node* j = head; j != nullptr; j = j->next)
+				{
+					if (j->value.IsAlive() == false)
+					{
+						DeleteByPos(iter);
+						SomeoneDied(j->value);
+						found == true;
+						i++;
+						return;
+					}
+					iter++;
+				}
 			}
-			iter++;
+			else 
+			{
+				return;
+			}
 		}
 	}
 	void GrowOne()
@@ -103,22 +140,6 @@ public:
 		}
 	}
 
-	void AddToHead(T value)
-	{
-		Node* newNode = new Node(nullptr, value, head);
-
-		if (IsEmpty())
-		{
-			head = tail = newNode;
-		}
-		else
-		{
-			head->prev = newNode;
-			head = newNode;
-		}
-
-		size++;
-	}
 	void AddToTail(T value)
 	{
 		Node* newNode = new Node(tail, value, nullptr);
@@ -214,14 +235,14 @@ public:
 	}
 	void DeleteByPos(int pos)
 	{
-		if (pos < 1 || pos > size)
+		if (pos < 0 || pos >= size)
 			return;
-		else if (pos == 1)
+		else if (pos == 0)
 		{
 			DeleteFromHead();
 			return;
 		}
-		else if (pos == size)
+		else if (pos == (size - 1))
 		{
 			DeleteFromTail();
 			return;
@@ -229,7 +250,7 @@ public:
 		else
 		{
 			Node* current;
-			if (pos <= size / 2)
+			if (pos <= (size / 2) - 1)
 			{
 				current = head;
 				for (int i = 1; i < pos; ++i)
@@ -251,6 +272,22 @@ public:
 			delete current;
 			size--;
 		}
+	}
+
+	T operator[](int pos)
+	{
+		int iter = 0;
+
+		for (Node* i = head; i != nullptr; i = i->next)
+		{
+			if (iter == pos)
+			{
+				return i->value;
+			}
+			iter++;
+		}
+
+		return T();
 	}
 };
 
@@ -344,6 +381,15 @@ public:
 
 	Animal() = delete;
 	Animal(float age, float MAXAGE, string view, string name, string gender) : name(name), gender(gender), SomethingAlive(age, MAXAGE, view) {}
+
+	string GetGender()
+	{
+		return gender;
+	}
+	float GetAge()
+	{
+		return age;
+	}
 };
 class Fox : public Animal
 {
@@ -374,15 +420,15 @@ public:
 	{
 		for (int i = 0; i < 2; i++)
 		{
-			foxes.AddToHead(Fox());
-			rabbits.AddToHead(Rabbit());
-			grass.AddToHead(Grass());
+			foxes.AddToTail(Fox());
+			rabbits.AddToTail(Rabbit());
+			grass.AddToTail(Grass());
 		}
 		for (int i = 0; i < 2; i++)
 		{
-			foxes.AddToHead(Fox("female"));
-			rabbits.AddToHead(Rabbit("female"));
-			grass.AddToHead(Grass());
+			foxes.AddToTail(Fox("female"));
+			rabbits.AddToTail(Rabbit("female"));
+			grass.AddToTail(Grass());
 		}
 	}
 
@@ -391,6 +437,12 @@ public:
 		cout << "Foxes: "; foxes.Print();
 		cout << "Rabbits: "; rabbits.Print();
 		cout << "Grass: "; grass.Print();
+	}
+	void PrintRusults() const
+	{
+		cout << "Foxes: " << CountFoxes() << endl;
+		cout << "Rabbits: " << CountRabbits() << endl;
+		cout << "Grass: " << CountGrass() << endl;
 	}
 	void ShortPrint() const
 	{
@@ -410,7 +462,7 @@ public:
 	{
 		cout << "Grass: "; grass.Print(); cout << endl;
 	}
-	
+
 	void AddAgeForFirsts(float age)
 	{
 		foxes.AddAge(age, 1);
@@ -427,7 +479,7 @@ public:
 	}
 	void AddAgeForOneGrass(float age)
 	{
-		rabbits.AddAge(age, 1);
+		grass.AddAge(age, 1);
 	}
 
 	void AddAgeForFirst(float age, int pos)
@@ -446,14 +498,23 @@ public:
 	}
 	void AddAgeForOneGrass(float age, int pos)
 	{
-		rabbits.AddAge(age, pos);
+		grass.AddAge(age, pos);
 	}
-	
+
 	void GrowAll()
 	{
-		foxes.Grow();
-		rabbits.Grow();
-		grass.Grow();
+		if (foxes.GetSize() != 0)
+		{
+			foxes.Grow();
+		}
+		if (rabbits.GetSize() != 0)
+		{
+			rabbits.Grow();
+		}
+		if (grass.GetSize() != 0)
+		{
+			grass.Grow();
+		}
 	}
 	void GrowFoxes()
 	{
@@ -483,26 +544,170 @@ public:
 		else
 			return "female";
 	}
+	int RandomiseNumber()
+	{
+		int chance = 5 + rand() % 150;
+		chance -= rand() % 50;
+		chance %= 10;
+		return chance;
+	}
 
-	void BirthFox() 
+	void BirthFox()
 	{
-		Fox NewFox(0.1, RandomiseGender());
-		foxes.AddToTail(NewFox);
+		if (RandomiseNumber() == 1)
+		{
+			for (int i = 0; i < foxes.GetSize() - 1; i++)
+			{
+				if (foxes[i].GetGender() != foxes[i + 1].GetGender())
+				{
+					Fox NewFox(0.1, RandomiseGender());
+					foxes.AddToTail(NewFox);
+					return;
+				}
+			}
+		}
 	}
-	void BirthRabbit() 
+	void BirthRabbit()
 	{
-		Rabbit NewRabbit(0.1, RandomiseGender());
-		rabbits.AddToTail(NewRabbit);
+		if (RandomiseNumber() == 1)
+		{
+			for (int i = 0; i < rabbits.GetSize() - 1; i++)
+			{
+				if (rabbits[i].GetGender() != rabbits[i + 1].GetGender())
+				{
+					Rabbit NewRabbit(0.1, RandomiseGender());
+					rabbits.AddToTail(NewRabbit);
+					cout << "+1 rabbit" << endl;
+					return;
+				}
+			}
+		}
 	}
-	void NewGrass() 
+	void NewGrass()
 	{
+		cout << "+1 grass" << endl;
 		grass.AddToTail(Grass());
+	}
+
+	void FoxAteRabbit()
+	{
+		rabbits.DeleteFromHead();
+	}
+	void RabbitAteGrass()
+	{
+		grass.DeleteFromHead();
+	}
+
+	int CountFoxes() const
+	{
+		return foxes.GetSize();
+	}
+	int CountRabbits() const
+	{
+		return rabbits.GetSize();
+	}
+	int CountGrass() const
+	{
+		return grass.GetSize();
+	}
+
+	int AdultFoxes()
+	{
+		int counter = 0;
+		for (int i = 0; i < foxes.GetSize(); i++)
+		{
+			if (foxes[i].GetAge() >= 1)
+			{
+				counter++;
+			}
+		}
+		return counter;
+	}
+	int AdultRabbits()
+	{
+		int counter = 0;
+		for (int i = 0; i < rabbits.GetSize(); i++)
+		{
+			if (rabbits[i].GetAge() >= 1)
+			{
+				counter++;
+			}
+		}
+		return counter;
+	}
+
+	void FoxIllAndDie()
+	{
+		if (foxes.IllAndDie())
+		{
+			cout << "One fox died of an illness!" << endl;
+		}
+	}
+	void RabbitIllAndDie()
+	{
+		if (rabbits.IllAndDie())
+		{
+			cout << "One rabbit died of an illness!" << endl;
+		}
+	}
+	void GrassIllAndDie()
+	{
+		if (grass.IllAndDie())
+		{
+			cout << "One grass died from the disease!" << endl;
+		}
 	}
 };
 
-void OneYear(Life life)
+void OneYear(Life& life)
 {
+	static int repeted;
 
+	while (repeted < 365)
+	{
+		this_thread::sleep_for(chrono::milliseconds(100));
+		if (repeted == 20)
+		{
+			system("cls");
+		}
+
+		cout << "-_-_-_-_-_-_-_-_-_-_-| DAY " << repeted << " |-_-_-_-_-_-_-_-_-_-_-" << endl;
+
+		if (life.CountFoxes() < 5)
+		{
+			life.BirthFox();
+			cout << "+1 fox!" << endl;
+		}
+		life.BirthRabbit();
+		life.NewGrass();
+
+		if (life.CountFoxes() < life.CountRabbits())
+		{
+			cout << "A fox ate a rabbit!" << endl;
+			life.FoxAteRabbit();
+		}
+		if (life.CountRabbits() < life.CountGrass())
+		{
+			cout << "A rabbit ate a grass!" << endl;
+			life.RabbitAteGrass();
+		}
+
+		if (repeted % 50 == 0)
+		{
+			life.FoxIllAndDie();
+			life.RabbitIllAndDie();
+			life.GrassIllAndDie();
+		}
+
+		life.GrowAll();
+
+		repeted++;
+	}
+}
+
+void Results(Life life)
+{
+	life.PrintRusults();
 }
 
 void main()
@@ -540,6 +745,9 @@ void main()
 	srand(time(NULL));
 
 	Life life;
+
+	OneYear(life);
+	Results(life);
 
 	/*life.ShortPrint();
 	life.Grow();
