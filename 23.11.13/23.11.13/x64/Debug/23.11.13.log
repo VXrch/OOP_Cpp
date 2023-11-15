@@ -1,21 +1,21 @@
 ﻿  Source.cpp
-D:\ht\23.11.13\23.11.13\Source.cpp(305,24): warning C4305: инициализация: усечение из "double" в "float"
-D:\ht\23.11.13\23.11.13\Source.cpp(333,1): warning C4305: +=: усечение из "double" в "float"
-D:\ht\23.11.13\23.11.13\Source.cpp(349,67): warning C4305: инициализация: усечение из "double" в "float"
-D:\ht\23.11.13\23.11.13\Source.cpp(397,17): warning C4305: аргумент: усечение из "double" в "float"
-D:\ht\23.11.13\23.11.13\Source.cpp(398,30): warning C4305: аргумент: усечение из "double" в "float"
-D:\ht\23.11.13\23.11.13\Source.cpp(399,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\ht\23.11.13\23.11.13\Source.cpp(400,39): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\ht\23.11.13\23.11.13\Source.cpp(405,20): warning C4305: аргумент: усечение из "double" в "float"
-D:\ht\23.11.13\23.11.13\Source.cpp(406,33): warning C4305: аргумент: усечение из "double" в "float"
-D:\ht\23.11.13\23.11.13\Source.cpp(407,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\ht\23.11.13\23.11.13\Source.cpp(408,42): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\ht\23.11.13\23.11.13\Source.cpp(563,17): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-D:\ht\23.11.13\23.11.13\Source.cpp(578,23): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-D:\ht\23.11.13\23.11.13\Source.cpp(714,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
-D:\ht\23.11.13\23.11.13\Source.cpp(745,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\ht\23.11.13\23.11.13\Source.cpp(103,13): warning C4553: "==": результат выражения не используется; вы хотели использовать "="?
-D:\ht\23.11.13\23.11.13\Source.cpp(83,7): message : во время компиляции функции-члена класс шаблон "void List<Grass>::Grow(void)"
-D:\ht\23.11.13\23.11.13\Source.cpp(516,14): message : см. первую ссылку на "List<Grass>::Grow" в "Life::GrowAll"
-D:\ht\23.11.13\23.11.13\Source.cpp(415,14): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "List<Grass>"
-  23.11.13.vcxproj -> D:\ht\23.11.13\x64\Debug\23.11.13.exe
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(304,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(332,1): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(348,7): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(396,5): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(397,5): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(398,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(399,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(404,8): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(405,8): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(406,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(407,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(561,16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(575,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(718,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(749,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(102,13): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(83,1): message : while compiling class template member function 'void List<Grass>::Grow(void)'
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(515,14): message : see reference to function template instantiation 'void List<Grass>::Grow(void)' being compiled
+C:\Users\dev\Desktop\OOP\23.11.13\23.11.13\Source.cpp(414,14): message : see reference to class template instantiation 'List<Grass>' being compiled
+  23.11.13.vcxproj -> C:\Users\dev\Desktop\OOP\23.11.13\x64\Debug\23.11.13.exe

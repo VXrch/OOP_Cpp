@@ -1,6 +1,5 @@
 ﻿#include <iostream>
-#include <chrono>
-#include <thread>
+#include <windows.h>
 
 using namespace std;
 
@@ -98,8 +97,8 @@ public:
 				{
 					if (j->value.IsAlive() == false)
 					{
-						DeleteByPos(iter);
 						SomeoneDied(j->value);
+						DeleteByPos(iter);
 						found == true;
 						i++;
 						return;
@@ -554,16 +553,14 @@ public:
 
 	void BirthFox()
 	{
-		if (RandomiseNumber() == 1)
+
+		for (int i = 0; i < foxes.GetSize() - 1; i++)
 		{
-			for (int i = 0; i < foxes.GetSize() - 1; i++)
+			if (foxes[i].GetGender() != foxes[i + 1].GetGender())
 			{
-				if (foxes[i].GetGender() != foxes[i + 1].GetGender())
-				{
-					Fox NewFox(0.1, RandomiseGender());
-					foxes.AddToTail(NewFox);
-					return;
-				}
+				Fox NewFox(0.1, RandomiseGender());
+				foxes.AddToTail(NewFox);
+				return;
 			}
 		}
 	}
@@ -661,16 +658,21 @@ public:
 
 void OneYear(Life& life)
 {
-	static int repeted;
+	int repeted = 0;
 
 	while (repeted < 365)
 	{
-		this_thread::sleep_for(chrono::milliseconds(100));
+		Sleep(1000);
+
 		if (repeted == 20)
 		{
 			system("cls");
 		}
 
+		if (repeted == 38)
+		{
+			cout << "";
+		}
 		cout << "-_-_-_-_-_-_-_-_-_-_-| DAY " << repeted << " |-_-_-_-_-_-_-_-_-_-_-" << endl;
 
 		if (life.CountFoxes() < 5)
