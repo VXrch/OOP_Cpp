@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\dev\Desktop\OOP\23.11.15_Virtual_Destructor_Multiple_Inheritance\23.11.15_Virtual_Destructor_Multiple_Inheritance\Source.cpp(6,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\dev\Desktop\OOP\23.11.15_Virtual_Destructor_Multiple_Inheritance\23.11.15_Virtual_Destructor_Multiple_Inheritance\Source.cpp(7,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  23.11.15_Virtual_Destructor_Multiple_Inheritance.vcxproj -> C:\Users\dev\Desktop\OOP\23.11.15_Virtual_Destructor_Multiple_Inheritance\x64\Debug\23.11.15_Virtual_Destructor_Multiple_Inheritance.exe

@@ -2,10 +2,16 @@
 #include <conio.h>
 #include <iomanip>
 #include <string>
+#include <Windows.h>
 #include <chrono>
 #include <thread>
 
 using namespace std;
+
+void SetColor(int color)
+{
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
 
 template <typename T_Stack>
 class Stack
@@ -47,17 +53,11 @@ public:
         cout << endl;
     }
 
-    T_Stack operator [](int i)
-    {
-        return arr[i];
-    }
-
     int GetCount()const {
-        return topIndex + 1;
+        return topIndex;
     }
     int Peek()
     {
-
         if (!IsEmpty()) {
             return arr[topIndex];
         }
@@ -100,6 +100,14 @@ public:
     }
     void Clear() {
         topIndex = EMPTY;
+    }
+
+    T_Stack operator[](int pos)
+    {
+        if (pos < 0 || pos > topIndex)
+            return T_Stack();
+
+        return arr[pos];
     }
 
     ~Stack()
@@ -172,6 +180,7 @@ void AnyLine(int symbhol, int iter) {
         cout << (char)symbhol;
     }
 }
+
 void Enter(int number) 
 {
     for (int i = 0; i < number; i++)
@@ -196,6 +205,29 @@ void Enter(int number, string text)
         cout << " ";
     }
 }
+void Enter(int color, int number, string text, bool blink) 
+{
+    for (int i = 0; i < number / 2; i++) 
+    {
+        cout << " ";
+    }
+
+    if (blink) 
+    {
+        SetColor(color);
+        cout << text;
+        SetColor(7);
+    }
+    else 
+    {
+        cout << text;
+    }
+
+    for (int i = 0; i < number / 2; i++) {
+        cout << " ";
+    }
+}
+
 void TOP(User user) {
 
     string text = GetBalance(user);
@@ -218,7 +250,8 @@ void START(User user)
     AnyLine(218, 1);       AnyLine(196, full_lenght);            AnyLine(191, 1);
     cout << endl;
     //      │                         START                         │
-    AnyLine(179, 1);     Enter((full_lenght - text.length()), text); AnyLine(179, 1);
+    if (user.name.length() % 2 == 0) { AnyLine(179, 1); Enter((full_lenght - text.length()), text); cout << " ";  AnyLine(179, 1); }
+    else { AnyLine(179, 1); Enter((full_lenght - text.length()), text);  AnyLine(179, 1); }
     cout << endl;
     //      └───────────────────────────────────────────────────────┘
     AnyLine(192, 1);      AnyLine(196, full_lenght);             AnyLine(217, 1);
@@ -241,12 +274,107 @@ void MENU()
     AnyLine(192, 1);       AnyLine(196, len);       AnyLine(193, 1);        AnyLine(196, len);        AnyLine(193, 1);          AnyLine(196, len);           AnyLine(217, 1);
     cout << endl;
 }
+void PRINTONETEXT(string text, int enter = 0, int delay = 0)
+{
+
+    int fulllen = text.length() * 2;
+
+    if (enter == 0)
+    {
+        enter = text.length();
+    }
+    else
+    {
+        fulllen = enter + text.length();
+    }
+
+    //      ┌───────────────────────────────────────────────────────┐
+    AnyLine(218, 1);       AnyLine(196, fulllen);            AnyLine(191, 1);
+    cout << endl;
+    //      │                         TEXT                          │
+    AnyLine(179, 1);     Enter(enter, text); AnyLine(179, 1);
+    cout << endl;
+    //      └───────────────────────────────────────────────────────┘
+    AnyLine(192, 1);      AnyLine(196, fulllen);             AnyLine(217, 1);
+    cout << endl;
+
+    Sleep(delay);
+}
+int COLORTEXT(string text, int enter = 0)
+{
+    int fulllen = text.length() * 2;
+
+    if (enter == 0)
+    {
+        enter = text.length();
+    }
+    else
+    {
+        fulllen = enter + text.length();
+    }
+
+    int i = 0;
+
+    while (!_kbhit())
+    {
+        system("cls");
+        //      ┌───────────────────────────────────────────────────────────┐
+        AnyLine(218, 1);           AnyLine(196, fulllen);              AnyLine(191, 1);
+        cout << endl;
+        //      |                                                           |
+        AnyLine(179, 1);           
+        if (i % 2 == 0) { Enter(7, enter, text, true); }
+        else { Enter(8, enter, text, true); }
+        AnyLine(179, 1);
+        cout << endl;
+        //      └───────────────────────────────────────────────────────────┘
+        AnyLine(192, 1);           AnyLine(196, fulllen);              AnyLine(217, 1);
+        cout << endl;
+
+        Sleep(500); i++;
+    }
+
+    return 1;
+}
+
+template<typename T>
+void HISTORY(Stack<T>& history)
+{
+    int size = history.GetCount();
+    string text;
+
+    //        ┌────────────────────────────────────────┐
+    AnyLine(218, 1);   AnyLine(196, 20);   AnyLine(191, 1);
+    cout << endl;
+    
+    for (int i = 0; i < size; i++)
+    {
+        if (i != 0 && i != size) // if not the firs and not the last iteration
+        {
+            //├────────────────────────────────────────┤
+            AnyLine(195, 1); AnyLine(196, 20); AnyLine(180, 1); cout << endl;
+        }
+        text = "+" + to_string(history[i]); 
+        AnyLine(179, 1); Enter(20 - text.length(), text); if (i == 0 || i == size-1) { cout << " "; } AnyLine(179, 1);  cout << endl;
+    }
+    
+    AnyLine(192, 1); AnyLine(196, 20); AnyLine(217, 1);
+    cout << endl;
+
+    system("pause");
+    system("cls");
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void GiantFrog();
 int MainPage(User& user);
-int Menu();
+
+template<typename T>
+void HistoryMenu(Stack<T>& history);
+
+template<typename T>
+int Menu(Stack<T>& history);
 
 template<typename T>
 int DrumsSpin(User& user, Stack<T>& history);
@@ -266,10 +394,10 @@ void SmoothPhrase(int n1, int n2, int n3)
         r_n_1 = 1 + rand() % 4; r_n_2 = 1 + rand() % 4; r_n_3 = 1 + rand() % 4;
 
         cout << "\t\t";  PrintByNumber(r_n_1); cout << " "; PrintByNumber(r_n_2); cout << " "; PrintByNumber(r_n_3);
-        this_thread::sleep_for(chrono::milliseconds(delay));
+        //Sleep(delay);
         delay += 50;
     }
-    this_thread::sleep_for(chrono::milliseconds(1000));
+    //Sleep(1000);
     system("cls");
 }
 
@@ -295,6 +423,12 @@ void main()
             Виконати дане завдання з використанням Queue (данімічна структура даних - черга).
     */
 
+    /*for (int i = 0; i < 256; i++)
+    {
+        SetColor(i);
+        cout << "i = " << i << " | ";
+    }*/
+
     srand(time(NULL));
     
     Stack<int> history;
@@ -304,6 +438,8 @@ void main()
     
     bool ext = false;
     int choice;
+
+    system("cls");
 
     while (!ext)
     {
@@ -315,7 +451,9 @@ void main()
         }
         else if (choice == 0) // Menu
         {
-            choice = Menu();
+            system("cls");
+
+            choice = Menu(history);
 
             if (choice == 0)
             {
@@ -356,30 +494,68 @@ int MainPage(User& user) //  Username / Balance / Menu / Start (200 w.)
         }
     }
 }
-int Menu()
-{
-    MENU();
 
+template <typename T>
+void HistoryMenu(Stack<T>& history)
+{
+    string text;
+
+    if (history.GetCount() == -1)
+    {
+        text = "HISTORY IS EMPTY";
+        PRINTONETEXT(text, 36, 3000);
+    }
+    else
+    {
+        HISTORY(history);
+        text = "(PRESS [ENTER] TO GO BACK)";
+        COLORTEXT(text);
+    }
+   
+    int key = _getch();
+
+    if (key == 70 || key == 102) // Frog :)
+    {
+        system("cls");
+        GiantFrog();
+        system("pause");
+        system("cls");
+    }
+    else
+    {
+        system("cls");
+        return;
+    }
+}
+
+template <typename T>
+int Menu(Stack<T>& history)
+{
     bool ext = false;
 
     while (!ext)
     {
+        MENU();
+
         int key = _getch();
 
         if (key == 49) // Exit
         {
+            system("cls");
             ext = true;
             return 0;
         }
         else if (key == 50) // History
         {
-            
+            system("cls");
+            HistoryMenu(history);
         }
         else if (key == 51) // Return
         {
-            
+            system("cls");
+            ext = true;
         }
-        else if (key == 70) // Frog :)
+        else if (key == 70 || key == 102) // Frog :)
         {
             system("cls");
             GiantFrog();
