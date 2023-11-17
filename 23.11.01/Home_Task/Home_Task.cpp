@@ -169,6 +169,15 @@ void PrintByNumber(int n)
     }
 }
 
+template<typename T>
+T CorrectNumber(T value)
+{
+    if (value % 2 == 0)
+        return value;
+    
+    return value + 1;
+}
+
 const string text_menu = "MENU [0]";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -188,13 +197,16 @@ void Enter(int number)
         cout << " ";
     }
 }
-void Enter(string text_to_add) {
-
+void Enter(string text_to_add) 
+{
     float text_lenght = text_to_add.length();
     cout << " " << setw(text_lenght) << text_to_add << " ";
 }
 void Enter(int number, string text)
 {
+    if (number % 2 == 1)
+        number++;
+
     for (int i = 0; i < number/2; i++)
     {
         cout << " ";
@@ -207,6 +219,9 @@ void Enter(int number, string text)
 }
 void Enter(int color, int number, string text, bool blink) 
 {
+    if (number % 2 == 1)
+        number++;
+
     for (int i = 0; i < number / 2; i++) 
     {
         cout << " ";
@@ -245,13 +260,13 @@ void START(User user)
 {
     string text = GetBalance(user);
     int full_lenght = 8 + user.name.length() + text_menu.length() + text.length();
+    CorrectNumber(full_lenght);
     text = "press [ENTER] to START (200 w)";
     //      ┌───────────────────────────────────────────────────────┐
     AnyLine(218, 1);       AnyLine(196, full_lenght);            AnyLine(191, 1);
     cout << endl;
     //      │                         START                         │
-    if (user.name.length() % 2 == 0) { AnyLine(179, 1); Enter((full_lenght - text.length()), text); cout << " ";  AnyLine(179, 1); }
-    else { AnyLine(179, 1); Enter((full_lenght - text.length()), text);  AnyLine(179, 1); }
+    AnyLine(179, 1);   Enter(4); Enter(text); Enter(full_lenght - 6 - text.length());          AnyLine(179, 1);
     cout << endl;
     //      └───────────────────────────────────────────────────────┘
     AnyLine(192, 1);      AnyLine(196, full_lenght);             AnyLine(217, 1);
@@ -268,7 +283,7 @@ void MENU()
     AnyLine(218, 1);       AnyLine(196, len);       AnyLine(194, 1);        AnyLine(196, len);        AnyLine(194, 1);          AnyLine(196, len);           AnyLine(191, 1);
     cout << endl;
     //      │                    EXIT                     │               SPINS HISTORY                     │            RETURN TO MAIN PAGE                 │
-    AnyLine(179, 1); Enter((len - t1.length() + 1), t1); AnyLine(179, 1); Enter((len - t2.length()), t2); cout << " "; AnyLine(179, 1); Enter((len - t3.length()), t3); AnyLine(179, 1);
+    AnyLine(179, 1); Enter((len - t1.length()), t1); AnyLine(179, 1); Enter((len - t2.length() - 1), t2); cout << " "; AnyLine(179, 1); Enter((len - t3.length()), t3); AnyLine(179, 1);
     cout << endl;
     //      └─────────────────────────────────────────────┴─────────────────────────────────────────────────┴────────────────────────────────────────────────┘
     AnyLine(192, 1);       AnyLine(196, len);       AnyLine(193, 1);        AnyLine(196, len);        AnyLine(193, 1);          AnyLine(196, len);           AnyLine(217, 1);
@@ -349,13 +364,19 @@ void HISTORY(Stack<T>& history)
     
     for (int i = 0; i < size; i++)
     {
-        if (i != 0 && i != size) // if not the firs and not the last iteration
+        text = "+" + to_string(history[i]);
+        if (history[i] < 100) { text += " "; }
+        int t_len = 20 - text.length();
+        if (history[i] > 1000 && history[i] < 10000) { t_len--; }
+        CorrectNumber(t_len);
+
+        AnyLine(179, 1); Enter(t_len, text); AnyLine(179, 1); cout << endl;
+
+        if (i != size - 1) // if not the firs and not the last iteration
         {
             //├────────────────────────────────────────┤
             AnyLine(195, 1); AnyLine(196, 20); AnyLine(180, 1); cout << endl;
         }
-        text = "+" + to_string(history[i]); 
-        AnyLine(179, 1); Enter(20 - text.length(), text); if (i == 0 || i == size-1) { cout << " "; } AnyLine(179, 1);  cout << endl;
     }
     
     AnyLine(192, 1); AnyLine(196, 20); AnyLine(217, 1);
@@ -407,18 +428,18 @@ void main()
 {
     /*
                     Тема: Динамічні структури даних — стек
-                                
+
                                 Завдання N2
             Змініть стек з першого завдання зі статичного типу на
             динамічний(за нестачі вільного місця потрібно змінити
             розмір внутрішнього масиву без втрати даних).
-            
+
                                 Завдання N3
                 Створити імітацію гри "однорукий бандит".
-                
+
             Наприклад, при натисканні кнопки «Enter» відбувається «обертання»
             трьох барабанів (кількість обертань кожного з них вибирається випадково),
-            на яких зображені різні значки і якщо випадає певна комбінація, 
+            на яких зображені різні значки і якщо випадає певна комбінація,
             то гравець отримує якийсь виграш.
             Виконати дане завдання з використанням Queue (данімічна структура даних - черга).
     */
@@ -430,12 +451,12 @@ void main()
     }*/
 
     srand(time(NULL));
-    
+
     Stack<int> history;
 
     User user;
     cout << "Enter your username: "; cin >> user.name;
-    
+
     bool ext = false;
     int choice;
 

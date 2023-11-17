@@ -1,33 +1,32 @@
 ﻿  Home_Task.cpp
 C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(128,52): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(193,23): warning C4244: 'initializing': conversion from 'unsigned __int64' to 'float', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(194,25): warning C4244: 'argument': conversion from 'float' to 'std::streamsize', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(235,61): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(235,115): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(235,177): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(241,61): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(241,115): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(241,175): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(247,82): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(253,98): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(254,70): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(265,31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(271,55): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(271,104): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(271,166): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(280,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(284,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(288,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(305,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(309,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(313,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(407,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(432,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(342,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(500,1): message : see reference to function template instantiation 'void HISTORY<int>(Stack<int> &)' being compiled
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(533,1): message : see reference to function template instantiation 'void HistoryMenu<int>(Stack<int> &)' being compiled
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(456,34): message : see reference to function template instantiation 'int Menu<int>(Stack<int> &)' being compiled
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(202,23): warning C4244: 'initializing': conversion from 'unsigned __int64' to 'float', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(203,25): warning C4244: 'argument': conversion from 'float' to 'std::streamsize', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(250,61): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(250,115): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(250,177): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(256,61): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(256,115): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(256,175): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(262,82): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(269,84): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(280,31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(286,51): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(286,104): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(286,166): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(295,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(299,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(303,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(320,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(324,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(328,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(428,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(453,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(357,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(521,1): message : see reference to function template instantiation 'void HISTORY<int>(Stack<int> &)' being compiled
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(554,1): message : see reference to function template instantiation 'void HistoryMenu<int>(Stack<int> &)' being compiled
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(477,34): message : see reference to function template instantiation 'int Menu<int>(Stack<int> &)' being compiled
 C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(146): warning C4715: 'RandomiseProbabilities': not all control paths return a value
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(496): warning C4715: 'MainPage': not all control paths return a value
-C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(566): warning C4715: 'Menu<int>': not all control paths return a value
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(517): warning C4715: 'MainPage': not all control paths return a value
+C:\Users\dev\Desktop\OOP\23.11.01\Home_Task\Home_Task.cpp(587): warning C4715: 'Menu<int>': not all control paths return a value
   Home_Task.vcxproj -> C:\Users\dev\Desktop\OOP\23.11.01\x64\Debug\Home_Task.exe
