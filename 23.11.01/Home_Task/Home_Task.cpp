@@ -124,7 +124,7 @@ class GAME
         string name;
         int balance;
 
-        User() : name(name), balance(100) {}
+        User() : name(name), balance(500) {}
     };
 
     Stack<T> history;
