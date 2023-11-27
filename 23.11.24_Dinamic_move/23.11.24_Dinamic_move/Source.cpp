@@ -1,86 +1,49 @@
-#include <Windows.h>
-#include <chrono>
-#include <conio.h>
-#include <fstream>
+﻿#include <fstream>
 #include <ostream>
 #include <string>
 #include <vector>
 #include"Console.h"
+#include"Menu.h"
 
 enum Direction { LEFT, RIGHT, UP, DOWN };
 
-struct coord
+class Move
 {
-    int col;
-    int row;
+protected:
 
-    coord(int col, int row) : col(col), row(row) {}
-};
-
-void FromFile(vector<coord>& coordinates, string FILENAME);
-void ToFile(vector<coord>& trains, string FILENAME);
-
-class Hero
-{
-    int hp;
     int h, w;
     COORD position;
-    string name;
-    char symbol;
     Direction dir;
-
-    void Print(char filler)const
-    {
-        for (int i = 0; i < h; i++)
-        {
-            gotoxy(position.X, position.Y + i);
-            for (int j = 0; j < w; j++)
-            {
-                cout << filler;
-            }
-            cout << endl;
-        }
-    }
-
+    
 public:
 
-    Hero() :hp(100), h(1), w(1), position({ 0,0 }), name("no name"), symbol('#'), dir(RIGHT) {}
-    Hero(string name, int h, int w, char symbol) :hp(100), position({ 0,0 }), dir(RIGHT), name(name), symbol(symbol)
-    {
-        this->h = h >= 1 ? h : 1;
-        this->w = w >= 1 ? w : 1;      
-    }
-    
-    void ShowInfo()const
-    {
-        cout << "--------------- Player [" << name << "] Hp : " << hp << "-------------" << endl;
-    }
+    Move() : h(1), w(2), position({0, 0}), dir(RIGHT) {}
+    Move(int h, int w, COORD pos, Direction dir) : h(h), w(w), position(pos), dir(dir) {}
+
     bool IsValidPosition(int x, int y)
     {
         return x >= 0 && y >= 0;
+    }
+
+    void PlusCoordinateX(vector<COORD>& vector_of_COORDs)
+    {
+        for (int i = 0; i < vector_of_COORDs.size(); i++)
+        {
+            vector_of_COORDs[i].X++;
+        }
+    }
+    void PlusCoordinateY(vector<COORD>& vector_of_COORDs, int plus = 1)
+    {
+        for (int i = 0; i < vector_of_COORDs.size(); i++)
+        {
+            vector_of_COORDs[i].Y += plus;
+        }
     }
 
     void SetPosition(int x, int y)
     {
         position.X = x >= 0 ? x : 0;
         position.Y = y >= 0 ? y : 0;
-    }
-
-    void Move(int color)
-    {
-        ClearHero();
-
-        bool isMoved = false;
-        
-        switch (dir)
-        {
-        case LEFT:isMoved = MoveLeft(); break;
-        case RIGHT:isMoved = MoveRight(); break;
-        case UP:isMoved = MoveUp(); break;
-        case DOWN:isMoved = MoveDown(); break;
-        }
-
-        isMoved ? PrintHero(color) : MarkHero();
     }
 
     void ChangeDirection(Direction dir)
@@ -92,7 +55,7 @@ public:
     {
         if (IsValidPosition(position.X + 1, position.Y))
         {
-            position.X++;
+            position.X += 2;
             return true;
         }
         return false;
@@ -102,7 +65,7 @@ public:
     {
         if (IsValidPosition(position.X - 1, position.Y))
         {
-            position.X--;
+            position.X -= 2;
             return true;
         }
         return false;
@@ -127,23 +90,9 @@ public:
         return false;
     }
 
-    void PrintHero(int color)const
+    void ChangeColor(int Xor)const
     {
-        ChangeColor(color);
-        Print(symbol);
-    }
-    void MarkHero()const
-    {
-        SetConsoleTextAttribute(hConsole, ConsoleColors::MAGENTA);
-        Print(symbol);
-    }
-    void ClearHero()const
-    {
-        Print((char)219);
-    }
-    void ChangeColor(int color)const
-    {
-        switch (color)
+        switch (Xor)
         {
         case 49: SetConsoleTextAttribute(hConsole, ConsoleColors::BLACK); break;
         case 50: SetConsoleTextAttribute(hConsole, ConsoleColors::WHITE); break;
@@ -158,104 +107,180 @@ public:
         }
     }
 
-    void SetCursorPosition(int col, int row, int color = 49, char symbhol = char(219))
+    void SetCursorPosition(int X, int Y, int Xor = 49, char symbhol = char(219))
     {
-        gotoxy(col, row);
-        ChangeColor(color);
+        gotoxy(X, Y);
+        ChangeColor(Xor);
         cout << symbhol;
     }
-    void PrintByCoordinates(vector<coord> black, int color = 49)
+    void PrintByCoordinates(vector<COORD> black, int Xor = 49)
     {
         for (int i = 0; i < black.size(); i++)
         {
-            SetCursorPosition(black[i].col, black[i].row, color);
+            SetCursorPosition(black[i].X, black[i].Y, Xor);
         }
+    }
+
+};
+
+class Hero : public Move
+{
+    struct Player
+    {
+        string name;
+        int hp;
+
+        Player(string name, int hp) : name(name), hp(hp) {}
+    };
+    
+    void MovePlayer(int color)
+    {
+        ClearHero();
+
+        bool isMoved = false;
+
+        switch (dir)
+        {
+        case LEFT:isMoved = MoveLeft(); break;
+        case RIGHT:isMoved = MoveRight(); break;
+        case UP:isMoved = MoveUp(); break;
+        case DOWN:isMoved = MoveDown(); break;
+        }
+
+        isMoved ? PrintHero(color) : MarkHero();
+    }
+
+    Player player;
+    char symbol;
+    
+    void Print(char symbol)const
+    {
+        for (int i = 0; i < h; i++)
+        {
+            gotoxy(position.X, position.Y + i);
+            for (int j = 0; j < w; j++)
+            {
+                cout << symbol;
+            }
+            cout << endl;
+        }
+    }
+
+public:
+
+    Hero(string name, int hp, char symbol, int h, int w, COORD pos, Direction dir) : symbol(symbol), player(name, hp), ::Move(h, w, pos, dir) {}
+    
+    void ShowInfo()const
+    {
+       
+    }
+    
+    void PrintHero(int Xor)const
+    {
+        ChangeColor(Xor);
+        Print(symbol);
+    }
+    void MarkHero()const
+    {
+        SetConsoleTextAttribute(hConsole, ConsoleColors::MAGENTA);
+        Print(symbol);
+    }
+    void ClearHero()const
+    {
+        Print((char)219);
+    }
+
+    void ToFile(vector<COORD>& trains, string FILENAME)
+    {
+        ofstream outputFile(FILENAME);
+
+        if (!outputFile.is_open())
+        {
+            cout << "Can't open file: " << FILENAME << endl;
+            return;
+        }
+
+        for (int i = 0; i < trains.size(); i++)
+        {
+            outputFile << trains[i].X << endl;
+            outputFile << trains[i].Y << endl;
+        }
+
+        outputFile.close();
+    }
+    void FromFile(vector<COORD>& COORDinates, string FILENAME)
+    {
+        ifstream inputFile(FILENAME);
+
+        if (!inputFile.is_open())
+        {
+            cout << "Can't open file: " << FILENAME << endl;
+            return;
+        }
+
+        string s_X, s_Y;
+        int X = 0, Y = 0;
+
+        int i = 0;
+
+        while (!inputFile.eof())
+        {
+            getline(inputFile, s_X);
+
+            if (s_X.empty())
+                break;
+
+            X = stoi(s_X);
+
+            getline(inputFile, s_Y);
+            Y = stoi(s_Y);
+
+            COORD coordinates;
+            coordinates.X = X;
+            coordinates.Y = Y;
+            COORDinates.push_back(coordinates);
+
+            i++;
+        }
+
+        inputFile.close();
     }
 
     void Mushroom()
     {
-        vector<coord> mushroom_black;
+        vector<COORD> mushroom_black;
         FromFile(mushroom_black, "Mushroom_black.txt");
         PrintByCoordinates(mushroom_black);
+        PrintByCoordinates(mushroom_black);
+    }
+
+    void Start()
+    {
+        
     }
 };
 
-void ToFile(vector<coord>& trains, string FILENAME)
-{
-    ofstream outputFile(FILENAME);
-
-    if (!outputFile.is_open())
-    {
-        cout << "Can't open file: " << FILENAME << endl;
-        return;
-    }
-
-    for (int i = 0; i < trains.size(); i++)
-    {
-        outputFile << trains[i].col << endl;
-        outputFile << trains[i].row << endl;
-    }
-
-    outputFile.close();
-}
-void FromFile(vector<coord>& coordinates, string FILENAME)
-{
-    ifstream inputFile(FILENAME);
-
-    if (!inputFile.is_open())
-    {
-        cout << "Can't open file: " << FILENAME << endl;
-        return;
-    }
-
-    string s_col, s_row;
-    int col = 0, row = 0;
-
-    int i = 0;
-
-    while (!inputFile.eof())
-    {
-        getline(inputFile, s_col);
-
-        if (s_col.empty())
-            break;
-
-        col = stoi(s_col);
-
-        getline(inputFile, s_row);
-        row = stoi(s_row);
-
-        coord coordinate(col, row);
-        coordinates.push_back(coordinate);
-
-        i++;
-    }
-
-    inputFile.close();
-}
-
 int main()
 {
-    system("color 70");
+    system("Xor 70");
 
     hidecursor();
-    Hero hero("Bill", 1, 2, (char)219);
-    hero.ShowInfo();
+    /*Hero hero((char)219);
     hero.Mushroom();
-    hero.SetCursorPosition(0, 0);
+    hero.SetCursorPosition(25, 25);
 
-    /*hero.SetPosition(10, 10);
+    hero.SetPosition(10, 10);
     time_t interval = 500;
     time_t start = clock();
     int key;
 
-    int color = 49;
+    int Xor = 49;*/
 
-    while (true)
+    /*while (true)
     {
         if (clock() >= start + interval)
         {
-            hero.Move(color);
+            hero.Move(Xor);
             start = clock();
         }
 
@@ -277,7 +302,7 @@ int main()
             }
             else if (key >= 49 && key <= 57)
             {
-                color = key;
+                Xor = key;
             }
         }
     }*/

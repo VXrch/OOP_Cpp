@@ -1,2 +1,11 @@
 ﻿  Source.cpp
-  23.11.24_Dinamic_move.vcxproj -> D:\ht\23.11.24_Dinamic_move\x64\Debug\23.11.24_Dinamic_move.exe
+C:\Users\dev\Desktop\OOP\23.11.24_Dinamic_move\23.11.24_Dinamic_move\Menu.h(33,23): warning C4244: 'initializing': conversion from 'unsigned __int64' to 'float', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.24_Dinamic_move\23.11.24_Dinamic_move\Menu.h(34,25): warning C4244: 'argument': conversion from 'float' to 'std::streamsize', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.24_Dinamic_move\23.11.24_Dinamic_move\Menu.h(80,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.24_Dinamic_move\23.11.24_Dinamic_move\Menu.h(84,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.24_Dinamic_move\23.11.24_Dinamic_move\Menu.h(88,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.24_Dinamic_move\23.11.24_Dinamic_move\Menu.h(103,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.24_Dinamic_move\23.11.24_Dinamic_move\Menu.h(107,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.24_Dinamic_move\23.11.24_Dinamic_move\Menu.h(111,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\OOP\23.11.24_Dinamic_move\23.11.24_Dinamic_move\Source.cpp(265,9): warning C4101: 'key': unreferenced local variable
+  23.11.24_Dinamic_move.vcxproj -> C:\Users\dev\Desktop\OOP\23.11.24_Dinamic_move\x64\Debug\23.11.24_Dinamic_move.exe
