@@ -1,0 +1,3 @@
+﻿  Source.cpp
+D:\ht\23.11.27_HT_Car\23.11.27_HT_Car\Source.cpp(110,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  23.11.27_HT_Car.vcxproj -> D:\ht\23.11.27_HT_Car\x64\Debug\23.11.27_HT_Car.exe
