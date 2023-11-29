@@ -3,7 +3,7 @@
 
 using namespace std;
 
-enum Ingredients { None, tomatoes, mushrooms, chicken, pork, olives, olives, corn, pineapples, cheese, karchofs, sausage };
+enum Ingredients { None, tomatoes, mushrooms, chicken, pork, olives, corn, pineapples, cheese, karchofs, sausage };
 enum Sauces { None, tomato, cheese, barbecue, taco, soy, tartar, mint, cranberry, hollandaise, mayonnaise, Garlic };
 
 class Sauce
@@ -58,14 +58,45 @@ class Pizza
 {
 	vector<Ingredients> ingredients;
 	string dough;
-	Sauce *sauce;
 
 public:
 
-	Pizza() : ingredients(), dough("none"), sauce() {}
-	Pizza(vector<Ingredients> ingredients, string dough, Sauce sauce) : ingredients(ingredients), dough(dough) {}
+	Pizza() : ingredients(), dough("none") {}
+	Pizza(vector<Ingredients> ingredients, string dough) : ingredients(ingredients), dough(dough){}
 
 	virtual void MakePizza() = 0;
+	void PrintPrescription()
+	{
+		bool printed = false;
+
+		cout << "Prescription : " << endl;
+
+		if (ingredients.size() >= 0)
+		{
+			for (int i = 0; i < ingredients.size(); i++)
+			{
+				cout << ingredients[i] << ", ";
+			}
+
+			cout << endl;
+			printed = true;
+		}
+
+		cout << "Dough: " << endl;
+
+		if (printed == false)
+		{
+			cout << "Prescription is empty!" << endl;
+		}
+	}
+};
+
+class Fabric
+{
+	
+
+
+
 };
 
 void main()
