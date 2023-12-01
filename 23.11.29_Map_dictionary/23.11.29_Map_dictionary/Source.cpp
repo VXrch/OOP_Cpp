@@ -42,6 +42,60 @@ public:
         return words.find(word) != words.end();
     }
 
+    void AddTranslation(Dictionary& dict)
+    {
+        dict.Print();
+
+        string input = "";
+        cout << "Enter word to add translate : "; getline(cin, input);
+
+        if (dict.IsExist(input))
+        {
+            string translate = "";
+            cout << "Enter translation of this word : "; getline(cin, translate);
+
+            dict.AddTranslation(input, translate);
+        }
+        else
+        {
+            cout << "This word doesn't exist!" << endl;
+        }
+    }
+    void AddWord(Dictionary& dict)
+    {
+        dict.Print();
+
+        string input = "";
+        cout << "Enter word to add: "; getline(cin, input);
+
+        if (!dict.IsExist(input))
+        {
+            string translate = "";
+            cout << "Enter translation of this word : "; getline(cin, translate);
+            if (translate != "")
+            {
+                dict.AddTranslation(input, translate);
+            }
+        }
+        else
+        {
+            cout << "This word is alredy exist!" << endl;
+        }
+    }
+
+    void WriteToFile(Dictionary& read)
+    {
+        ofstream out("Dictionary.txt");
+        out << read;
+        out.close();
+    }
+    void ReadFromFile(Dictionary& read)
+    {
+        ifstream in("Dictionary.txt");
+        in >> read;
+        in.close();
+    }
+
     friend ostream& operator << (ostream& out, const Dictionary& d);
     friend istream& operator >> (istream& in, Dictionary& d);
 };
@@ -86,60 +140,6 @@ istream& operator >> (istream& in, Dictionary& d)
     return in;
 }
 
-void ReadFromFile(Dictionary& read)
-{
-    ifstream in("Dictionary.txt");
-    in >> read;
-    in.close();
-}
-void WriteToFile(Dictionary& read)
-{
-    ofstream out("Dictionary.txt");
-    out << read;
-    out.close();
-}
-
-void AddTranslation(Dictionary& dict)
-{
-    dict.Print();
-
-    string input = "";
-    cout << "Enter word to add translate : "; getline(cin, input);
-
-    if (dict.IsExist(input))
-    {
-        string translate = "";
-        cout << "Enter translation of this word : "; getline(cin, translate);
-
-        dict.AddTranslation(input, translate);
-    }
-    else
-    {
-        cout << "This word doesn't exist!" << endl;
-    }
-}
-void AddWord(Dictionary& dict)
-{
-    dict.Print();
-
-    string input = "";
-    cout << "Enter word to add: "; getline(cin, input);
-
-    if (!dict.IsExist(input))
-    {
-        string translate = "";
-        cout << "Enter translation of this word : "; getline(cin, translate);
-        if (translate != "")
-        {
-            dict.AddTranslation(input, translate);
-        }
-    }
-    else
-    {
-        cout << "This word is alredy exist!" << endl;
-    }
-}
-
 int main()
 {
     int numb = 0;
@@ -164,91 +164,14 @@ int main()
         switch (choice)
         {
         case 0: cout << "BYE!" << endl; ext = true; break;
-        case 1: ReadFromFile(dict); break;
-        case 2: WriteToFile(dict); break;
+        case 1: dict.ReadFromFile(dict); break;
+        case 2: dict.WriteToFile(dict); break;
         case 3: dict.Print(); break;
-        case 4: AddWord(dict); break;
-        case 5: AddTranslation(dict); break;
+        case 4: dict.AddWord(dict); break;
+        case 5: dict.AddTranslation(dict); break;
         default: cout << "Wrongn number!" << endl; break;
         }
         system("pause");
         system("cls");
     }
-
-    //Dictionary dict("English-Ukrainian");
-    //dict.InsertWord("run", { "bigtu","zapustutu","keruvatu" });
-    //dict.InsertWord("make",  {"robutu","vurib","forma"} );
-    //dict.InsertWord("mind", { "dumka","rozum","gluzd" });
-    //dict.InsertWord("bad", { "podano","amoralnuy","zipsovanuy","brudkuy" });
-
-    
-    //// cin.ignore();
-
-    //if (!dict.IsExist(input))
-    //    cout << "Word not found!" << endl;
-    //else
-    //{
-    //    string translate = "";
-    //    do
-    //    {
-    //        cout << "Enter translate : ";
-    //        getline(cin, translate);
-    //        if(!translate.empty())
-    //            dict.AddTranslation(input, translate);
-
-    //    } while (!translate.empty());
-    //}
-    //dict.Print();
-
-    //ofstream out("Dictionary.txt");
-    //out << dict;
-    //out.close();
-    
-    /*
-    map<string, list<string>> dic;
-
-    string word = "run";
-    list<string> meanings = list<string>({ "bigtu","zapustutu","keruvatu" });
-    dic.insert(make_pair(word, meanings));
-    dic.insert(make_pair("make", list<string>({"robutu","vurib","forma"})));
-    dic.insert(make_pair("mind", list<string>({"dumka","rozum","gluzd"})));
-    dic.insert(make_pair("ride", list<string>({"yizdutu","katania","oblava"})));
-    dic.insert(make_pair("bad", list<string>({"podano","amoralnuy","zipsovanuy","brudkuy"})));
-
-
-    for (string str : dic["mind"])
-    {
-        cout << str << " ";
-    }
-    cout << endl;
-
-
-    string input = "";
-    cout << "Enter word to add translate : ";
-    getline(cin, input);
-   // cin.ignore();
-
-    if (dic.find(input) == dic.end())
-        cout << "Word not found!" << endl;
-    else
-    {
-        string translate = "";
-        do
-        {
-            cout << "Enter translate : ";
-            getline(cin, translate);
-
-            dic[input].push_back(translate);
-
-        } while (!translate.empty());
-    }
-
-    for (string str : dic[input])
-    {
-        cout << str << " ";
-    }
-    cout << endl;
-    */
-
-
 }
